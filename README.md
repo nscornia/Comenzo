@@ -1,2 +1,2 @@
 # Comenzo
-Terraria Test Mod
+Terraria Comenzo Mod
