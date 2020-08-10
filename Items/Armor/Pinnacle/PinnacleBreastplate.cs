@@ -51,13 +51,13 @@ namespace Comenzo.Items.Armor.Pinnacle
             // item.flame = false;
             // item.glowMask = -1;
             // item.hairDye = -1;
-            // item.healLife = 0;
+            item.healLife = 5;
             // item.healMana = 0;
             // item.holdStyle = 0;
             // item.instanced = false;
             // item.knockBack = 0f; // ** 	The force of the knock back. Max value is 20. */
             // item.lavaWet = false;
-            // item.lifeRegen = 0;
+            item.lifeRegen = 500;
             // item.makeNPC = 0;
             // item.mana = 0;
             // item.manaIncrease = 0;

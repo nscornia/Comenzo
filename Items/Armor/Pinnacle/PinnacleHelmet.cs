@@ -146,7 +146,7 @@ namespace Comenzo.Items.Armor.Pinnacle
 
 		public override void UpdateArmorSet(Player player) {
 			player.setBonus = "trollface.jpg";
-			player.allDamage -= 0.2f;
+
 			/* Here are the individual weapon class bonuses.
 			player.meleeDamage -= 0.2f;
 			player.thrownDamage -= 0.2f;

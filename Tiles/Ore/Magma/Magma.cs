@@ -23,12 +23,12 @@ namespace Comenzo.Tiles.Ore.Magma
 			name.SetDefault("Magma");
 			AddMapEntry(new Color(152, 171, 198), name);
 
-			dustType = 84;
+			dustType = mod.ItemType("Sparkle");
 			drop = ItemType<Items.Placeable.Magma.Magma>();
 			soundType = SoundID.Tink;
 			soundStyle = 1;
-			//mineResist = 4f;
-			//minPick = 200;
+			//mineResist = 3f;
+			minPick = 450;
 		}
 	}
 }

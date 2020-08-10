@@ -1,24 +1,24 @@
-// using Terraria.ID;
-// using Terraria.ModLoader;
+using Terraria.ModLoader;
+using Terraria.ID;
 
-// namespace Comenzo.Items
-// {
-//     public class Defaults : ModItem
-//     {
-//         public override void SetStaticDefaults()
-//         {
-            // DisplayName.SetDefault("platinum"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
+namespace Comenzo.Items.Weapons.TheDestroyer
+{
+    public class TheDestoryer : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("The Destroyer"); // By de+fault, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
             // Tooltip.SetDefault("This is a basic modded sword.");
-//         }
+        }
 
-//         public override void SetDefaults()
-//         {
-			// ** Fields */
+        public override void SetDefaults()
+        {
+            // ** Fields */
             // item.accessory = false;
             // item.active = true;
             // item.alpha = 0;
             // item.ammo = AmmoID.None;
-            // item.autoReuse = false; // ** Whether the item is in continuous use while the mouse button is held down.
+            item.autoReuse = true; // ** Whether the item is in continuous use while the mouse button is held down.
             // item.buffTime = 0;
             // item.buffType = 0;
             // item.buy = false;
@@ -28,8 +28,8 @@
             // item.consumable = false;
             // item.createTile = -1;
             // item.createWall = -1;
-            // item.crit = 0; // ** The base critical chance for this item (%). Remember that the player has a base crit chance of 4. */
-            // item.damage = 0;
+            item.crit = 10; // ** The base critical chance for this item (%). Remember that the player has a base crit chance of 4. */
+            item.damage = 202;
             // item.DD2Summon = false;
             // item.defense = 0; // ** The amount of defense this item provides when equipped, either as an accessory or armor. */
             // item.dye = 0;
@@ -54,7 +54,7 @@
             // item.mech = false;
             // item.mountType = -1;
             // item.netID = 0;
-            // item.noMelee = false; // ** If true, the item's using animation will not deal damage. Set to true on most weapons that aren't swords.
+            // item.noMelee = false;
             // item.notAmmo = false;
             // item.noUseGraphic = false;
             // item.noWet = false;
@@ -62,8 +62,8 @@
             // item.placeStyle = 0;
             // item.potion = false;
             // item.prefix = 0;
-			// item.questItem = false;
-            // item.rare = 0;
+            // item.questItem = false;
+            item.rare = ItemRarityID.Expert;
             // item.release = 0;
             // item.reuseDelay = 0;
             // item.scale = 1f;
@@ -79,44 +79,44 @@
             // item.type = 0;
             // item.uniqueStack = false;
             // item.useAmmo = AmmoID.None;
-            // item.useAnimation = 100;
+            item.useAnimation = 5;
             // item.UseSound = null;
-            // item.useStyle = 0; // ** The use style of your item: 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns */
-            // item.useTime = 100; // ** The time span of using the item in frames. Blocks use 10. Default value is 100. Weapons usually have equal useAnimation and useTime, unequal values for these two results in multiple attacks per click.
-            // item.useTurn = false; // ** Whether the player can turn around while the using animation is happening.
-            // item.value = 0;
-            // item.vanity = false;
-            // item.wet = false;
-            // item.wetCount = 0;
+            item.useStyle = ItemUseStyleID.SwingThrow; // ** The use style of your item: 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns */
+            item.useTime = 5; // ** The time span of using the item in frames. Blocks use 10. Default value is 100. Weapons usually have equal useAnimation and useTime, unequal values for these two results in multiple attacks per click.
+            item.useTurn = true; // ** Whether the player can turn around while the using animation is happening.
+                                  // item.value = 0;
+                                  // item.vanity = false;
+                                  // item.wet = false;
+                                  // item.wetCount = 0;
 
 
 
-			// ** Size */
-            // item.height = 0;
-            // item.width = 0;
+            // ** Size */
+            item.height = 5;
+            item.width = 10;
 
 
-			// ** Damage Type */
-            // item.melee = false;
+            // ** Damage Type */
+            item.melee = true;
             // item.magic = false;
             // item.ranged = false;
             // item.thrown = false;
             // item.summon = false;
 
 
-			// ** Tool Power */
+            // ** Tool Power */
             // item.axe = 0;
             // item.pick = 0;
             // item.hammer = 0;
 
 
-			// ** Fishing Power */
+            // ** Fishing Power */
             // item.bait = 0;
             // item.fishingPole = 0;
 
 
-			// ** Assigned Slot */
-			// item.backSlot = -1;
+            // ** Assigned Slot */
+            // item.backSlot = -1;
             // item.balloonSlot = -1;
             // item.bodySlot = -1;
             // item.faceSlot = -1;
@@ -132,21 +132,21 @@
             // item.wingSlot = -1;
 
 
-			// ** Static Fields */
-			// item.staff = false;
+            // ** Static Fields */
+            // item.staff = false;
 
-			// ** tModLoader Only */
-			// item.modItem = null;
-			// item.globalItems = new GlobalItem[0];
-//         }
+            // ** tModLoader Only */
+            // item.modItem = null;
+            // item.globalItems = new GlobalItem[0];
+        }
 
-//         public override void AddRecipes()
-//         {
-            // ModRecipe recipe = new ModRecipe(mod);
-            // recipe.AddIngredient(ItemID.DirtBlock, 1);
-            // recipe.AddTile(TileID.WorkBenches);
-            // recipe.SetResult(this);
-            // recipe.AddRecipe();
-//         }
-//     }
-// }
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.DirtBlock, 1);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
+}
