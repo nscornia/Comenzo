@@ -6,7 +6,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace Comenzo.Tiles.Ore.Magma
 {
-	public class Magma : ModTile
+	public class MagmaOre : ModTile
 	{
 		public override void SetDefaults()
 		{
@@ -20,11 +20,11 @@ namespace Comenzo.Tiles.Ore.Magma
 			Main.tileBlockLight[Type] = true;
 
 			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Magma");
+			name.SetDefault("Magma Ore");
 			AddMapEntry(new Color(152, 171, 198), name);
 
-			dustType = mod.ItemType("Sparkle");
-			drop = ItemType<Items.Placeable.Magma.Magma>();
+			// dustType = mod.ItemType("Sparkle");
+			drop = ItemType<Items.Placeable.MagmaOre.MagmaOre>();
 			soundType = SoundID.Tink;
 			soundStyle = 1;
 			//mineResist = 3f;

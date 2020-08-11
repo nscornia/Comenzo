@@ -2,9 +2,9 @@
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace Comenzo.Items.Placeable.Magma
+namespace Comenzo.Items.Placeable.MagmaOre
 {
-	public class Magma : ModItem
+	public class MagmaOre : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -20,7 +20,7 @@ namespace Comenzo.Items.Placeable.Magma
 			item.autoReuse = true;
 			item.maxStack = 999;
 			item.consumable = true;
-			item.createTile = TileType<Tiles.Ore.Magma.Magma>();
+			item.createTile = TileType<Tiles.Ore.MagmaOre.MagmaOre>();
 			item.width = 12;
 			item.height = 12;
 			item.value = 3000;
