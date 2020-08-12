@@ -2,7 +2,7 @@
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace Comenzo.Items.Placeable.MagmaOre
+namespace Comenzo.Items.Placeable.Ore.MagmaOre
 {
 	public class MagmaOre : ModItem
 	{

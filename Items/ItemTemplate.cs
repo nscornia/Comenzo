@@ -1,31 +1,19 @@
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
+// using Terraria.ID;
+// using Terraria.ModLoader;
 
-namespace Comenzo.Items.Armor.Pinnacle
-{
+// namespace Comenzo.Items
+// {
+//     public class ItemTemplate : ModItem
+//     {
+//         public override void SetStaticDefaults()
+//         {
+            // DisplayName.SetDefault("platinum"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
+            // Tooltip.SetDefault("This is a basic modded sword.");
+//         }
 
-	// CMYK
-	// C : -100%
-	// M : 25%
-	// Y : 100%
-	// K : -25%
-
-    [AutoloadEquip(EquipType.Body)]
-    public class PinnacleBreastplate : ModItem
-    {
-        public override void SetStaticDefaults()
-        {
-            base.SetStaticDefaults();
-            DisplayName.SetDefault("Example Breastplate");
-            Tooltip.SetDefault("This is a modded body armor."
-                + "\nImmunity to 'On Fire!'"
-                + "\n+20 max mana and +1 max minions");
-        }
-
-        public override void SetDefaults()
-        { // ** Fields */
+//         public override void SetDefaults()
+//         {
+			// ** Fields */
             // item.accessory = false;
             // item.active = true;
             // item.alpha = 0;
@@ -43,7 +31,7 @@ namespace Comenzo.Items.Armor.Pinnacle
             // item.crit = 0; // ** The base critical chance for this item (%). Remember that the player has a base crit chance of 4. */
             // item.damage = 0;
             // item.DD2Summon = false;
-            item.defense = 60; // 0; // ** The amount of defense this item provides when equipped, either as an accessory or armor. */
+            // item.defense = 0; // ** The amount of defense this item provides when equipped, either as an accessory or armor. */
             // item.dye = 0;
             // item.expert = false;
             // item.expertOnly = false;
@@ -51,13 +39,13 @@ namespace Comenzo.Items.Armor.Pinnacle
             // item.flame = false;
             // item.glowMask = -1;
             // item.hairDye = -1;
-            item.healLife = 5;
+            // item.healLife = 0;
             // item.healMana = 0;
             // item.holdStyle = 0;
             // item.instanced = false;
             // item.knockBack = 0f; // ** 	The force of the knock back. Max value is 20. */
             // item.lavaWet = false;
-            item.lifeRegen = 500;
+            // item.lifeRegen = 0;
             // item.makeNPC = 0;
             // item.mana = 0;
             // item.manaIncrease = 0;
@@ -66,7 +54,7 @@ namespace Comenzo.Items.Armor.Pinnacle
             // item.mech = false;
             // item.mountType = -1;
             // item.netID = 0;
-            // item.noMelee = false;
+            // item.noMelee = false; // ** If true, the item's using animation will not deal damage. Set to true on most weapons that aren't swords.
             // item.notAmmo = false;
             // item.noUseGraphic = false;
             // item.noWet = false;
@@ -74,8 +62,8 @@ namespace Comenzo.Items.Armor.Pinnacle
             // item.placeStyle = 0;
             // item.potion = false;
             // item.prefix = 0;
-            // item.questItem = false;
-            item.rare = ItemRarityID.Green; // 0;
+			// item.questItem = false;
+            // item.rare = 0;
             // item.release = 0;
             // item.reuseDelay = 0;
             // item.scale = 1f;
@@ -96,19 +84,19 @@ namespace Comenzo.Items.Armor.Pinnacle
             // item.useStyle = 0; // ** The use style of your item: 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns */
             // item.useTime = 100; // ** The time span of using the item in frames. Blocks use 10. Default value is 100. Weapons usually have equal useAnimation and useTime, unequal values for these two results in multiple attacks per click.
             // item.useTurn = false; // ** Whether the player can turn around while the using animation is happening.
-            item.value = 10000; // 0;
-                                // item.vanity = false;
-                                // item.wet = false;
-                                // item.wetCount = 0;
+            // item.value = 0;
+            // item.vanity = false;
+            // item.wet = false;
+            // item.wetCount = 0;
 
 
 
-            // ** Size */
-            item.height = 18; // 0;
-            item.width = 18; // 0;
+			// ** Size */
+            // item.height = 0;
+            // item.width = 0;
 
 
-            // ** Damage Type */
+			// ** Damage Type */
             // item.melee = false;
             // item.magic = false;
             // item.ranged = false;
@@ -116,19 +104,19 @@ namespace Comenzo.Items.Armor.Pinnacle
             // item.summon = false;
 
 
-            // ** Tool Power */
+			// ** Tool Power */
             // item.axe = 0;
             // item.pick = 0;
             // item.hammer = 0;
 
 
-            // ** Fishing Power */
+			// ** Fishing Power */
             // item.bait = 0;
             // item.fishingPole = 0;
 
 
-            // ** Assigned Slot */
-            // item.backSlot = -1;
+			// ** Assigned Slot */
+			// item.backSlot = -1;
             // item.balloonSlot = -1;
             // item.bodySlot = -1;
             // item.faceSlot = -1;
@@ -144,33 +132,21 @@ namespace Comenzo.Items.Armor.Pinnacle
             // item.wingSlot = -1;
 
 
-            // ** Static Fields */
-            // item.staff = false;
+			// ** Static Fields */
+			// item.staff = false;
 
-            // ** tModLoader Only */
-            // item.modItem = null;
-            // item.globalItems = new GlobalItem[0];
-        }
+			// ** tModLoader Only */
+			// item.modItem = null;
+			// item.globalItems = new GlobalItem[0];
+//         }
 
-        public override void UpdateEquip(Player player)
-        {
-            player.buffImmune[BuffID.OnFire] = true;
-            player.statManaMax2 += 20;
-            player.maxMinions++;
-        }
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            // recipe.AddIngredient(ItemType<EquipMaterial>(), 60);
-            // recipe.AddTile(TileType<ExampleWorkbench>());
-
-
-            recipe.AddIngredient(ItemID.Wood, 25);
-            recipe.AddTile(TileID.WorkBenches);
-
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
-    }
-}
+//         public override void AddRecipes()
+//         {
+            // ModRecipe recipe = new ModRecipe(mod);
+            // recipe.AddIngredient(ItemID.DirtBlock, 1);
+            // recipe.AddTile(TileID.WorkBenches);
+            // recipe.SetResult(this);
+            // recipe.AddRecipe();
+//         }
+//     }
+// }

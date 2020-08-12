@@ -1,19 +1,22 @@
-// using Terraria.ID;
-// using Terraria.ModLoader;
+using Terraria;
+using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
+using Terraria.ID;
 
-// namespace Comenzo.Items
-// {
-//     public class Defaults : ModItem
-//     {
-//         public override void SetStaticDefaults()
-//         {
-            // DisplayName.SetDefault("platinum"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-            // Tooltip.SetDefault("This is a basic modded sword.");
-//         }
+namespace Comenzo.Items.Armor.Magma
+{
+    [AutoloadEquip(EquipType.Head)]
+    public class MagmaHelmet : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Magma Helmet");
+            Tooltip.SetDefault("This helmet provides the Burning Buff!");
+        }
 
-//         public override void SetDefaults()
-//         {
-			// ** Fields */
+        public override void SetDefaults()
+        {
+            // ** Fields */
             // item.accessory = false;
             // item.active = true;
             // item.alpha = 0;
@@ -31,7 +34,7 @@
             // item.crit = 0; // ** The base critical chance for this item (%). Remember that the player has a base crit chance of 4. */
             // item.damage = 0;
             // item.DD2Summon = false;
-            // item.defense = 0; // ** The amount of defense this item provides when equipped, either as an accessory or armor. */
+            item.defense = 30; // 0; // ** The amount of defense this item provides when equipped, either as an accessory or armor. */
             // item.dye = 0;
             // item.expert = false;
             // item.expertOnly = false;
@@ -54,7 +57,7 @@
             // item.mech = false;
             // item.mountType = -1;
             // item.netID = 0;
-            // item.noMelee = false; // ** If true, the item's using animation will not deal damage. Set to true on most weapons that aren't swords.
+            // item.noMelee = false;
             // item.notAmmo = false;
             // item.noUseGraphic = false;
             // item.noWet = false;
@@ -62,8 +65,8 @@
             // item.placeStyle = 0;
             // item.potion = false;
             // item.prefix = 0;
-			// item.questItem = false;
-            // item.rare = 0;
+            // item.questItem = false;
+            item.rare = ItemRarityID.Green; // 0;
             // item.release = 0;
             // item.reuseDelay = 0;
             // item.scale = 1f;
@@ -84,19 +87,19 @@
             // item.useStyle = 0; // ** The use style of your item: 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns */
             // item.useTime = 100; // ** The time span of using the item in frames. Blocks use 10. Default value is 100. Weapons usually have equal useAnimation and useTime, unequal values for these two results in multiple attacks per click.
             // item.useTurn = false; // ** Whether the player can turn around while the using animation is happening.
-            // item.value = 0;
-            // item.vanity = false;
-            // item.wet = false;
-            // item.wetCount = 0;
+            item.value = 10000; // 0;
+                                // item.vanity = false;
+                                // item.wet = false;
+                                // item.wetCount = 0;
 
 
 
-			// ** Size */
-            // item.height = 0;
-            // item.width = 0;
+            // ** Size */
+            item.height = 18; // 0;
+            item.width = 18; // 0;
 
 
-			// ** Damage Type */
+            // ** Damage Type */
             // item.melee = false;
             // item.magic = false;
             // item.ranged = false;
@@ -104,19 +107,19 @@
             // item.summon = false;
 
 
-			// ** Tool Power */
+            // ** Tool Power */
             // item.axe = 0;
             // item.pick = 0;
             // item.hammer = 0;
 
 
-			// ** Fishing Power */
+            // ** Fishing Power */
             // item.bait = 0;
             // item.fishingPole = 0;
 
 
-			// ** Assigned Slot */
-			// item.backSlot = -1;
+            // ** Assigned Slot */
+            // item.backSlot = -1;
             // item.balloonSlot = -1;
             // item.bodySlot = -1;
             // item.faceSlot = -1;
@@ -132,21 +135,42 @@
             // item.wingSlot = -1;
 
 
-			// ** Static Fields */
-			// item.staff = false;
+            // ** Static Fields */
+            // item.staff = false;
 
-			// ** tModLoader Only */
-			// item.modItem = null;
-			// item.globalItems = new GlobalItem[0];
-//         }
+            // ** tModLoader Only */
+            // item.modItem = null;
+            // item.globalItems = new GlobalItem[0];
+        }
 
-//         public override void AddRecipes()
-//         {
-            // ModRecipe recipe = new ModRecipe(mod);
-            // recipe.AddIngredient(ItemID.DirtBlock, 1);
-            // recipe.AddTile(TileID.WorkBenches);
-            // recipe.SetResult(this);
-            // recipe.AddRecipe();
-//         }
-//     }
-// }
+        public override bool IsArmorSet(Item head, Item body, Item legs)
+        {
+            return body.type == ItemType<MagmaBreastplate>() && legs.type == ItemType<MagmaGreaves>();
+        }
+
+        public override void UpdateArmorSet(Player player)
+        {
+
+
+            player.AddBuff(BuffID.OnFire, 216000, true);
+            /* Here are the individual weapon class bonuses.
+			player.meleeDamage -= 0.2f;
+			player.thrownDamage -= 0.2f;
+			player.rangedDamage -= 0.2f;
+			player.magicDamage -= 0.2f;
+			player.minionDamage -= 0.2f;
+			*/
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+
+            recipe.AddIngredient(ItemType<Placeable.Bars.MagmaBar.MagmaBar>(), 15);
+            recipe.AddTile(TileID.MythrilAnvil);
+
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
+}

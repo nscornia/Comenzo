@@ -30,7 +30,7 @@ namespace Comenzo.Tiles.Bars.MagmaBar
 			int style = t.frameX / 18;
 			if (style == 0) // It can be useful to share a single tile with multiple styles. This code will let you drop the appropriate bar if you had multiple.
 			{
-				Item.NewItem(i * 16, j * 16, 16, 16, ItemType<Items.Placeable.MagmaBar>());
+				Item.NewItem(i * 16, j * 16, 16, 16, ItemType<Items.Placeable.Bars.MagmaBar.MagmaBar>());
 			}
 			return base.Drop(i, j);
 		}

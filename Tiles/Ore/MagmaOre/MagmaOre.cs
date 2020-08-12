@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 
-namespace Comenzo.Tiles.Ore.Magma
+namespace Comenzo.Tiles.Ore.MagmaOre
 {
 	public class MagmaOre : ModTile
 	{
@@ -24,7 +24,7 @@ namespace Comenzo.Tiles.Ore.Magma
 			AddMapEntry(new Color(152, 171, 198), name);
 
 			// dustType = mod.ItemType("Sparkle");
-			drop = ItemType<Items.Placeable.MagmaOre.MagmaOre>();
+			drop = ItemType<Items.Placeable.Ore.MagmaOre.MagmaOre>();
 			soundType = SoundID.Tink;
 			soundStyle = 1;
 			//mineResist = 3f;

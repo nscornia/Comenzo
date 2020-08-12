@@ -1,15 +1,17 @@
 using Terraria;
-using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
-namespace Comenzo.Items.Armor.Pinnacle
+namespace Comenzo.Items.Armor.Magma
 {
     [AutoloadEquip(EquipType.Legs)]
-    public class PinnacleGreaves : ModItem
+    public class MagmaGreaves : ModItem
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("This is a modded leg armor."
+            DisplayName.SetDefault("Magma Greaves");
+            Tooltip.SetDefault("This leg armor provides"
                 + "\n100% increased movement speed");
         }
 
@@ -159,8 +161,8 @@ namespace Comenzo.Items.Armor.Pinnacle
             // recipe.AddIngredient(ItemType<EquipMaterial>(), 45);
             // recipe.AddTile(TileType<ExampleWorkbench>());
 
-            recipe.AddIngredient(ItemID.Wood, 10);
-            recipe.AddTile(TileID.WorkBenches);
+            recipe.AddIngredient(ItemType<Placeable.Bars.MagmaBar.MagmaBar>(), 15);
+            recipe.AddTile(TileID.MythrilAnvil);
 
             recipe.SetResult(this);
             recipe.AddRecipe();

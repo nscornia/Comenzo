@@ -1,6 +1,5 @@
-using ExampleMod.Items;
-using ExampleMod.NPCs;
-using ExampleMod.Tiles;
+using Comenzo.Items;
+using Comenzo.Tiles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -17,7 +16,7 @@ using static Terraria.ModLoader.ModContent;
 
 namespace Comenzo
 {
-    public class Comenzo : ModWorld
+    public class ComenzoWorld : ModWorld
     {
         // We use this hook to add 3 steps to world generation at various points.
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
@@ -43,7 +42,7 @@ namespace Comenzo
 
             // Ores are quite simple, we simply use a for loop and the WorldGen.TileRunner to place splotches of the specified Tile in the world.
             // "6E-05" is "scientific notation". It simply means 0.00006 but in some ways is easier to read.
-            for (int k = 0; k < (int)((Main.maxTilesX * Main.maxTilesY) * 6E-02); k++)
+            for (int k = 0; k < (int)((Main.maxTilesX * Main.maxTilesY) * 6E-03); k++)
             {
                 // The inside of this for loop corresponds to one single splotch of our Ore.
                 // First, we randomly choose any coordinate in the world by choosing a random x and y value.
@@ -51,7 +50,7 @@ namespace Comenzo
                 int y = WorldGen.genRand.Next((int)WorldGen.rockLayer, Main.maxTilesY); // WorldGen.worldSurfaceLow is actually the highest surface tile. In practice you might want to use WorldGen.rockLayer or other WorldGen values.
 
                 // Then, we call WorldGen.TileRunner with random "strength" and random "steps", as well as the Tile we wish to place. Feel free to experiment with strength and step to see the shape they generate.
-                WorldGen.TileRunner(x, y, WorldGen.genRand.Next(5, 8), WorldGen.genRand.Next(5, 8), TileType<MagmaOre>());
+                WorldGen.TileRunner(x, y, WorldGen.genRand.Next(5, 8), WorldGen.genRand.Next(5, 8), TileType<Tiles.Ore.MagmaOre.MagmaOre>());
 
                 // Alternately, we could check the tile already present in the coordinate we are interested. Wrapping WorldGen.TileRunner in the following condition would make the ore only generate in Snow.
                 // Tile tile = Framing.GetTileSafely(x, y);

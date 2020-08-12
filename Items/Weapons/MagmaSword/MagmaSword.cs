@@ -1,24 +1,27 @@
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
-using Terraria.ID;
 
-namespace Comenzo.Items.Armor.Pinnacle
+namespace Comenzo.Items.Weapons.MagmaSword
 {
-	[AutoloadEquip(EquipType.Head)]
-	public class PinnacleHelmet : ModItem
-	{
-		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("This is a modded helmet.");
-		}
+	public class MagmaSword : ModItem
+    {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Magma Sword"); // By de+fault, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
+            Tooltip.SetDefault("This is a magma sword");
+        }
 
-		public override void SetDefaults() {
-			 // ** Fields */
+        public override void SetDefaults()
+        {
+            // ** Fields */
             // item.accessory = false;
             // item.active = true;
             // item.alpha = 0;
             // item.ammo = AmmoID.None;
-            // item.autoReuse = false; // ** Whether the item is in continuous use while the mouse button is held down.
+            item.autoReuse = true; // ** Whether the item is in continuous use while the mouse button is held down.
             // item.buffTime = 0;
             // item.buffType = 0;
             // item.buy = false;
@@ -28,16 +31,16 @@ namespace Comenzo.Items.Armor.Pinnacle
             // item.consumable = false;
             // item.createTile = -1;
             // item.createWall = -1;
-            // item.crit = 0; // ** The base critical chance for this item (%). Remember that the player has a base crit chance of 4. */
-            // item.damage = 0;
+            item.crit = 15; // ** The base critical chance for this item (%). Remember that the player has a base crit chance of 4. */
+            item.damage = 99;
             // item.DD2Summon = false;
-            item.defense = 30; // 0; // ** The amount of defense this item provides when equipped, either as an accessory or armor. */
+            // item.defense = 0; // ** The amount of defense this item provides when equipped, either as an accessory or armor. */
             // item.dye = 0;
             // item.expert = false;
             // item.expertOnly = false;
             // item.favorited = false; // ** 	If the item has been marked as favorited in the inventory. */
-            // item.flame = false;
-            // item.glowMask = -1;
+            item.flame = true;
+            item.glowMask = (short) 26;
             // item.hairDye = -1;
             // item.healLife = 0;
             // item.healMana = 0;
@@ -63,7 +66,7 @@ namespace Comenzo.Items.Armor.Pinnacle
             // item.potion = false;
             // item.prefix = 0;
             // item.questItem = false;
-            item.rare = ItemRarityID.Green; // 0;
+            item.rare = ItemRarityID.Expert;
             // item.release = 0;
             // item.reuseDelay = 0;
             // item.scale = 1f;
@@ -79,25 +82,25 @@ namespace Comenzo.Items.Armor.Pinnacle
             // item.type = 0;
             // item.uniqueStack = false;
             // item.useAmmo = AmmoID.None;
-            // item.useAnimation = 100;
+            item.useAnimation = 10;
             // item.UseSound = null;
-            // item.useStyle = 0; // ** The use style of your item: 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns */
-            // item.useTime = 100; // ** The time span of using the item in frames. Blocks use 10. Default value is 100. Weapons usually have equal useAnimation and useTime, unequal values for these two results in multiple attacks per click.
-            // item.useTurn = false; // ** Whether the player can turn around while the using animation is happening.
-            item.value = 10000; // 0;
-                                // item.vanity = false;
-                                // item.wet = false;
-                                // item.wetCount = 0;
+            item.useStyle = ItemUseStyleID.SwingThrow; // ** The use style of your item: 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns */
+            item.useTime = 10; // ** The time span of using the item in frames. Blocks use 10. Default value is 100. Weapons usually have equal useAnimation and useTime, unequal values for these two results in multiple attacks per click.
+            item.useTurn = true; // ** Whether the player can turn around while the using animation is happening.
+                                  // item.value = 0;
+                                  // item.vanity = false;
+                                  // item.wet = false;
+                                  // item.wetCount = 0;
 
 
 
             // ** Size */
-            item.height = 18; // 0;
-            item.width = 18; // 0;
+            item.height = 10;
+            item.width = 10;
 
 
             // ** Damage Type */
-            // item.melee = false;
+            item.melee = true;
             // item.magic = false;
             // item.ranged = false;
             // item.thrown = false;
@@ -138,34 +141,29 @@ namespace Comenzo.Items.Armor.Pinnacle
             // ** tModLoader Only */
             // item.modItem = null;
             // item.globalItems = new GlobalItem[0];
+        }
+
+		// public override void MeleeEffects(Player player, Rectangle hitbox) {
+		// 	if (Main.rand.NextBool(3)) {
+		// 		//Emit dusts when the sword is swung
+		// 		Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustType<Sparkle>());
+		// 	}
+		// }
+
+		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit) {
+			// Add the Onfire buff to the NPC for 1 second when the weapon hits an NPC
+			// 60 frames = 1 second
+			target.AddBuff(BuffID.OnFire, 60);
 		}
 
-		public override bool IsArmorSet(Item head, Item body, Item legs) {
-			return body.type == ItemType<PinnacleBreastplate>() && legs.type == ItemType<PinnacleGreaves>();
-		}
 
-		public override void UpdateArmorSet(Player player) {
-			player.setBonus = "trollface.jpg";
-
-			/* Here are the individual weapon class bonuses.
-			player.meleeDamage -= 0.2f;
-			player.thrownDamage -= 0.2f;
-			player.rangedDamage -= 0.2f;
-			player.magicDamage -= 0.2f;
-			player.minionDamage -= 0.2f;
-			*/
-		}
-
-		public override void AddRecipes() {
-			ModRecipe recipe = new ModRecipe(mod);
-			// recipe.AddIngredient(ItemType<EquipMaterial>(), 30);
-			// recipe.AddTile(TileType<ExampleWorkbench>());
-
-            recipe.AddIngredient(ItemID.Wood, 15);
-            recipe.AddTile(TileID.WorkBenches);
-
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemType<Items.Placeable.Bars.MagmaBar.MagmaBar>(), 18);
+            recipe.AddTile(TileType<Tiles.Anvils.MagmaAnvil.MagmaAnvil>());
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
 	}
 }
